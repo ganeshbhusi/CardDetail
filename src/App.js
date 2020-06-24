@@ -8,12 +8,20 @@
 
 import React from 'react';
 import {SafeAreaView} from 'react-native';
+import {Provider} from 'react-redux';
 import Navigation from './navigation';
+import {store, persistor} from './store';
+import {PersistGate} from 'redux-persist/integration/react';
 
+console.disableYellowBox = true;
 const App = () => {
   return (
     <SafeAreaView style={{flex: 1}}>
-      <Navigation />
+      <Provider store={store}>
+        <PersistGate persistor={persistor} loading={null}>
+          <Navigation />
+        </PersistGate>
+      </Provider>
     </SafeAreaView>
   );
 };

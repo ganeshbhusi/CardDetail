@@ -3,6 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import LoginScreen from '../components/Screens/LoginScreen';
 import CardsScreen from '../components/Screens/CardsScreen';
+import {connect} from 'react-redux';
 
 const Stack = createStackNavigator();
 const AuthStack = createStackNavigator();
@@ -27,16 +28,6 @@ const HomeStackScreens = () => {
     </HomeStack.Navigator>
   );
 };
-
-// const Navigation = () => {
-//   return (
-//     <NavigationContainer>
-//       <Stack.Navigator>
-//         <Stack.Screen name="LoginScreen" component={LoginScreen} />
-//       </Stack.Navigator>
-//     </NavigationContainer>
-//   );
-// };
 
 class Navigation extends React.Component {
   constructor(props) {
@@ -77,4 +68,10 @@ class Navigation extends React.Component {
   }
 }
 
-export default Navigation;
+const mapStateToProps = state => ({
+  isUserLoggedIn: state.loginReducer.isUserLoggedIn,
+});
+export default connect(
+  mapStateToProps,
+  null,
+)(Navigation);
