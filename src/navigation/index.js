@@ -11,7 +11,11 @@ const HomeStack = createStackNavigator();
 const AuthStackScreens = () => {
   return (
     <AuthStack.Navigator>
-      <AuthStack.Screen name="LoginScreen" component={LoginScreen} />
+      <AuthStack.Screen
+        name="LoginScreen"
+        component={LoginScreen}
+        options={{title: 'Login Page'}}
+      />
     </AuthStack.Navigator>
   );
 };
@@ -40,7 +44,6 @@ class Navigation extends React.Component {
 
     this.state = {
       isUserLoggedIn: false,
-      isLoading: false,
       userLoginData: [],
     };
   }
