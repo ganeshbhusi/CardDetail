@@ -4,6 +4,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import LoginScreen from '../components/Screens/LoginScreen';
 import CardsScreen from '../components/Screens/CardsScreen';
 import {connect} from 'react-redux';
+import CardDetailScreen from '../components/Screens/CardDetailScreen';
 
 const Stack = createStackNavigator();
 const AuthStack = createStackNavigator();
@@ -15,7 +16,7 @@ const AuthStackScreens = () => {
       <AuthStack.Screen
         name="LoginScreen"
         component={LoginScreen}
-        options={{title: 'Login Page'}}
+        options={{title: 'User Login'}}
       />
     </AuthStack.Navigator>
   );
@@ -25,6 +26,7 @@ const HomeStackScreens = () => {
   return (
     <HomeStack.Navigator>
       <HomeStack.Screen name="HomeScreen" component={CardsScreen} />
+      <HomeStack.Screen name="CardDetailScreen" component={CardDetailScreen} />
     </HomeStack.Navigator>
   );
 };
