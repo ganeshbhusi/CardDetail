@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, FlatList} from 'react-native';
+import {View, Text, FlatList, ActivityIndicator} from 'react-native';
 import {
   fetchCardsData,
   fetchCardsDataError,
@@ -44,10 +44,19 @@ class CardsFetchComponent extends Component {
   };
   render() {
     const {cardsDataReducer} = this.props;
-    const {cardsData} = cardsDataReducer;
-
+    const {
+      cardsData,
+      cardsDataFailed,
+      cardsDataStarted,
+      cardsDataSuccess,
+    } = cardsDataReducer;
+    console.log('cardsDataReducer: ', cardsDataReducer);
     return (
       <View>
+        {cardsDataFailed && <Text>Failed to fetch data</Text>}
+        {cardsDataStarted && !cardsDataSuccess && !cardsDataFailed && (
+          <ActivityIndicator size={'large'} />
+        )}
         <FlatList
           data={cardsData}
           renderItem={this.renderItem}

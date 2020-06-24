@@ -1,4 +1,4 @@
-export const APP_URL = 'http://192.168.43.178/testapp';
+export const APP_URL = 'http://libertysocial.net/testapp';
 export const LOGIN_API = 'userLogin.php';
 export const DATA_API = 'fetchCards.php';
 

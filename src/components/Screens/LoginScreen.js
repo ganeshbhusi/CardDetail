@@ -49,6 +49,12 @@ class LoginScreen extends Component {
 
   render() {
     const {navigation, loginReducer} = this.props;
+    const {
+      loginStarted,
+      loginSuccess,
+      loginFailed,
+      loggedInData,
+    } = loginReducer;
     return (
       <View style={LoginPageStyles.container}>
         <ScrollView
@@ -75,6 +81,22 @@ class LoginScreen extends Component {
                   onPress={this.loginUser}
                 />
               </View>
+              {loginStarted && !loginSuccess && !loginFailed && (
+                <Text>Loggin In......</Text>
+              )}
+              {loginSuccess && (
+                <View>
+                  {!emptyObjectData(loggedInData) &&
+                    loggedInData.success === true && (
+                      <Text>Successfully loggedin, Please wait...</Text>
+                    )}
+                  {!emptyObjectData(loggedInData) &&
+                    loggedInData.success === false && (
+                      <Text>{loggedInData.message}</Text>
+                    )}
+                </View>
+              )}
+              {loginFailed && !loginStarted && <Text>Error Occured</Text>}
             </View>
           </View>
         </ScrollView>
