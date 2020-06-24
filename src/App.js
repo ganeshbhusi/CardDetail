@@ -7,13 +7,14 @@
  */
 
 import React from 'react';
-import {View, Text} from 'react-native';
+import {SafeAreaView} from 'react-native';
+import Navigation from './navigation';
 
 const App = () => {
   return (
-    <View>
-      <Text>Welcome to Android/iOS</Text>
-    </View>
+    <SafeAreaView style={{flex: 1}}>
+      <Navigation />
+    </SafeAreaView>
   );
 };
 export default App;
